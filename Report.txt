@@ -1,0 +1,13 @@
+Coding the scrapper was easier than the dilemma of selecting my favorite retail brand. As I am very fond of eating pizzas, I wanted to go with Pizza Hut. I found out their store locator url and start searching for patterns in the store locations. In the advance search options we could see pizza hut locations state wise. So my rough plan was to extract the locations filtering the locations state wise. Each state has a different url with different number of pages. The indefinite number of pages was a big problem, the code didn't know when to stop and the pages were not returning 404, they were returning 200(OK) instead. To tackle this problem I used exception handling and keyword search to search for a specific element that is only there when the page doesn't exist. Overall this was a fun little assignment that I really enjoyed doing and would love to do more work like this.
+
+Following is the explanation of the submitted code:-
+
+The script uses the requests library to make an HTTP GET request to the website, and then uses the BeautifulSoup library to parse the HTML content of the response. It also uses the lxml library to create an HTML tree from the parsed content.
+
+The first part of the script extracts the names of Indian states from a drop-down list on the website using an XPath expression, and saves them into a list called "state_list". It also creates a list of URLs for each state, by appending the state name to the base URL of the website and replacing spaces with "%20".
+
+The second part of the script iterates through each state URL, and for each state, it extracts information about all the Pizza Hut outlets in that state. It does this by sending a GET request to the state URL with a page number appended to it, and then parsing the HTML content of the response to extract information such as outlet names, addresses, latitude, and longitude. It uses a function called "get_iterator" to extract information from multiple elements that have similar XPath expressions.
+
+The script then saves the extracted data into a list called "main_list", which contains tuples of outlet information for all the states. These tuple are created by zipping all of the required information together for each iteration.
+
+Finally, it writes the data from "main_list" into a CSV file named "data.csv" using the csv library.
